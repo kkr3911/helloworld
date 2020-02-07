@@ -1,8 +1,7 @@
 {
-    "Description": "Effective DevOps in AWS: ECS service - Helloworld",
     "Parameters": {
         "Tag": {
-            "Default": "latest",
+            "Default": "",
             "Description": "Tag to deploy",
             "Type": "String"
         }
@@ -35,27 +34,7 @@
         "service": {
             "Properties": {
                 "Cluster": {
-                    "Fn::ImportValue": {
-                        "Fn::Join": [
-                            "-",
-                            [
-                                {
-                                    "Fn::Select": [
-                                        0,
-                                        {
-                                            "Fn::Split": [
-                                                "-",
-                                                {
-                                                    "Ref": "AWS::StackName"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "cluster-id"
-                            ]
-                        ]
-                    }
+                    "Fn::ImportValue": "cluster-cluster-id"
                 },
                 "DesiredCount": 1,
                 "LoadBalancers": [
@@ -63,27 +42,7 @@
                         "ContainerName": "helloworld",
                         "ContainerPort": 3000,
                         "TargetGroupArn": {
-                            "Fn::ImportValue": {
-                                "Fn::Join": [
-                                    "-",
-                                    [
-                                        {
-                                            "Fn::Select": [
-                                                0,
-                                                {
-                                                    "Fn::Split": [
-                                                        "-",
-                                                        {
-                                                            "Ref": "AWS::StackName"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        "alb-target-group"
-                                    ]
-                                ]
-                            }
+                            "Fn::ImportValue": "helloworld-staging-alb-alb-target-group"
                         }
                     }
                 ],
@@ -114,9 +73,7 @@
                                     },
                                     ".amazonaws.com",
                                     "/",
-                                    {
-                                        "Fn::ImportValue": "helloworld-repo"
-                                    },
+                                    "helloworld",
                                     ":",
                                     {
                                         "Ref": "Tag"
