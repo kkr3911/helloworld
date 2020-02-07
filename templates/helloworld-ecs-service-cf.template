@@ -1,5 +1,5 @@
 {
-    "Description": "Effective DevOps in AWS: ECS service - Helloworlds",
+    "Description": "Effective DevOps in AWS: ECS service - Helloworld",
     "Parameters": {
         "Tag": {
             "Default": "latest",
