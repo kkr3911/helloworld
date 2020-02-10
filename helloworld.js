@@ -1,4 +1,4 @@
-const http = require("http");
+var http = require("http");
 var version = process.env.HELLOWORLD_VERSION;
 
 const winston = require('winston');

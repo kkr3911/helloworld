@@ -22,6 +22,7 @@
     "zombie": "^5.0.3"
   },
   "dependencies": {
+    "aws-sdk": "^2.614.0",
     "winston": "^3.2.1"
   }
 }
