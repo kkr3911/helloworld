@@ -36,7 +36,7 @@ const options = {
   
   // 개발 시 console에 출력
   console: {
-    level: 'debug',
+    level: 'info',
     handleExceptions: true,
     json: false, // 로그형태를 json으로도 뽑을 수 있다.
     format: combine(
