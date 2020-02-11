@@ -5,10 +5,10 @@ files:
       destination: /usr/local/helloworld/
     - source: scripts/helloworld.conf
       destination: /etc/init/
-#    - source: conf/logrotate
-#      destination: /etc/logrotate.d/helloworld
-#    - source: node_modules
-#      destination: /usr/local/helloworld/node_modules
+    - source: conf/logrotate
+      destination: /etc/logrotate.d/helloworld
+    - source: node_modules
+      destination: /usr/local/helloworld/node_modules
 hooks:
     BeforeInstall:
         - location: scripts/stop.sh
@@ -18,6 +18,6 @@ hooks:
           timeout: 30
     ValidateService:
         - location: scripts/validate.sh
-#    AfterInstall:
-#		- location: scripts/setversion.sh
-#          timeout: 180
+    AfterInstall:
+		- location: scripts/setversion.sh
+          timeout: 180
