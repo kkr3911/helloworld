@@ -5,7 +5,7 @@ const winston = require('winston');
 const moment = require('moment-timezone');
 
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, label, printf } = format;
+const { combine, timestamp, label, printf } = winston.format;
  
 const myFormat = printf(({ level, message, label, timestamp }) => {
   return `${timestamp} [${label}] ${level}: ${message}`;    // log 출력 포맷 정의
@@ -47,7 +47,7 @@ const options = {
   }
 }
 
-const logger = winston.createLogger({
+let logger = new winston.createLogger({
   transports: [
     new winston.transports.Console(options.console) // 중요! 위에서 선언한 option으로 로그 파일 관리 모듈 transport
   ],
@@ -66,4 +66,4 @@ http.createServer(function (request, response) {
 }).listen(3000)
 
 // Console will print the message
-logger.info('Server running')
+logger.info('Gr Test Server running')
