@@ -54,6 +54,8 @@ let logger = new winston.createLogger({
   exitOnError: false, 
 });
 
+logger.info('Gr Test Server Running');
+
 http.createServer(function (request, response) {
 
    // Send the HTTP header
@@ -62,8 +64,5 @@ http.createServer(function (request, response) {
    response.writeHead(200, {'Content-Type': 'text/plain'})
 
    // Send the response body as "Hello World"
-   response.end('Hello World\n')
+   response.end('Welcome To The Hello World\n')
 }).listen(3000)
-
-// Console will print the message
-logger.info('Gr Test Server running')
